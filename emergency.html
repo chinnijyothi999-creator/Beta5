@@ -1,0 +1,66 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Emergency</title>
+  <style>
+    .sub-button {
+      padding: 10px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    .helpline-numbers {
+      display: none;
+      padding: 10px;
+    }
+    .close-button {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      background-color: red;
+      color: white;
+      padding: 5px 10px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <button class="sub-button" onclick="showHealthHelplines()">Health</button>
+  <button class="sub-button" onclick="showSecurityHelplines()">Security</button>
+  <button class="close-button" onclick="closeIframe()">Close</button>
+  <div class="helpline-numbers" id="health-helplines">
+    <h2>Health Helplines</h2>
+    <p><a href="https://www.google.com/maps/search/ranchi+municipal+hospital/@23.3588947,85.2228732,12z/data=!3m1!4b1?entry=ttu&g_ep=EgoyMDI1MDkwOC4wIKXMDSoASAFQAw%3D%3D " target="_blank"> Ranchi Civil Hospital</a>: 0651-2441334</p>
+    <p><a href="https://maps.app.goo.gl/KkrktDsVdwzuPL7G8"  target="_blank" >MGM Medical College and Hospital, Jamshedpur</a>: 0657-2426191</p>
+    <p><a href="https://maps.app.goo.gl/MRhEhdSYmuChJPVN9" target="_blank">Patliputra Medical College and Hospital, Dhanbad</a>: 0326-2201521</p>
+  </div>
+  <div class="helpline-numbers" id="security-helplines">
+    <h2>Security Helplines</h2>
+    <p>Ranchi Police: 0651-2491000 </p>
+    <p>Jamshedpur Police: 0657-2421144</p>
+    <p>Dhanbad Police: 0326-2307070</p>
+  </div>
+
+  <script>
+    function showHealthHelplines() {
+      var healthHelplines = document.getElementById("health-helplines");
+      healthHelplines.style.display = "block";
+      var securityHelplines = document.getElementById("security-helplines");
+      securityHelplines.style.display = "none";
+    }
+    function showSecurityHelplines() {
+      var securityHelplines = document.getElementById("security-helplines");
+      securityHelplines.style.display = "block";
+      var healthHelplines = document.getElementById("health-helplines");
+      healthHelplines.style.display = "none";
+    }
+    function closeIframe() {
+      //window.top.document.getElementById("emergency-frame-container").style.display = "none";
+	window.parent.postMessage("close","*");
+    }
+  </script>
+</body>
+</html>
